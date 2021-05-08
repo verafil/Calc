@@ -23,11 +23,13 @@ public class Calculator {
                 if ((number1 > 10 || number1 < 0 ) || (number2 > 10 || number2 < 0))
                     throw new Exception("Неверный формат строки!");
                 result = calculate(number1, number2, words[1].charAt(0));
-                if (count == 2)
+                if (count == 2 && result > 0)
                     //входящие числа были римские, над бы результат перевести в римские
                     System.out.println(ConvertResult.toRom(result));
                 else if (count == 1 || count < 0)
                     //в выражении одно число римское или вообще не число
+                    throw new Exception("Неверный формат строки!");
+                else if (count == 2 && result <= 0)
                     throw new Exception("Неверный формат строки!");
                 else System.out.println(result);
             }else throw new Exception("Неверный формат строки!");
